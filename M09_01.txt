@@ -28,7 +28,7 @@ TF-IDF
 
 5. Apa keluaran dari fungsi zip() pada python?
 
-Hasil dari zip itu merupakan hasil pairing dari nama fitur yang akan dicek sentimennya (positif maupun negatif)
+Hasil dari zip itu merupakan seperti tuple hasil pairing dari nama fitur yang akan dicek sentimennya (positif maupun negatif)
 dan nilai hasil koefisien fitur tersebut yang menandakan tingkatanan nilai sentimennya (positif besar dan negatif semaik kecil)
 
 6. Pada kode program pembuatan feature_to_coef terdapat bagian word:coef. Apa artinya?
@@ -53,3 +53,6 @@ Masuk akal karena hasilnya sudah sesuai dengan ekspetasi
 10. Jika tidak masuk akal, apa yang perlu ditambahkan untuk mengatasi hal tersebut?
 (Diasumsikan kata-kata OOV dan stop words sudah dihapus).
 
+Bisa ditambahkan dengan vektorisasi bigram maupun trigram karena ada kata yang kalau berdiri sendiri merupakan kata yang netral. Tetapi pada analisis ini
+kata yang netral tersebut berada di bagian negatif. Contohnya adalah kata money. Money di analisis yang kami buat berada di bagian negatif. Harus dijelaskan dengan bigram atau trigram
+untuk menjelaskan money seperti apa (e.g. Worth of Money (+), Waste of Money (-))
