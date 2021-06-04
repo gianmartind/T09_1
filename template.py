@@ -34,7 +34,7 @@ def readFile(fileName):
 def txtCleaner(txt):
     # clean text (String), return cleaned text
     ## this function will be used in dfCleaner
-    text = re.sub('[^A-Za-z ]', '', txt)
+    text = re.sub('[^A-Za-z0-9 ]', ' ', txt)
     text = re.sub(' +', ' ', text)
     return text.lower()
 
@@ -138,20 +138,31 @@ def sentWordList():
     
     ## make feature:coef dictionary, round coef to 3 decimals
     # your code here, see example from the article
-    
+    feature_to_coef = {
+        word: round(coef, 3) for word, coef in zip(
+            CVEC.get_feature_names(), LOG_REG.coef_[0]
+        )
+    }
     ## If you still confused, see what's inside feature_to_coef by removing # below
     #print(feature_to_coef)
     
     ## fill in the pos & neg list
     # your code here, itterate through items in feature_to_coef dictionary and check coef value
     # if coef value < 0: item goes to neg_list, elif coef value > 0: item goes to pos_list
+    for key, value in feature_to_coef.items():
+        if value < 0:
+            neg_list.append(key)
+        else:
+            pos_list.append(key)
 
     ## dump sorted positive word list (from the most positive to less) into .pickle file
     pickle.dump(sorted(pos_list, key=lambda x: x[1], reverse=True), open('posList.pickle', 'wb'))
     # dump sorted negative word list (from the most negative to less) into negList.pickle file
+    pickle.dump(sorted(neg_list, key=lambda x: x[1], reverse=False), open('negList.pickle', 'wb'))
+    
     
 def main():
-    readFile('IMBD Dataset.csv')
+    readFile('trial.csv')
     dfCleaner()
     splitDf()
     classifier()
