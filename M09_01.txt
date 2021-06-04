@@ -1,0 +1,55 @@
+Kelompok 1
+
+Nama :
+
+Gian Martin Dwibudi - 6181801015
+Yalvi Hidayat		- 6181801044
+
+1. Pada template Anda diminta untuk membagi dataset berdasarkan label (positif dan
+negatif) terlebih dahulu sebelum membagi data train dan data test. Mengapa demikian?
+
+Alasannya agar hasil splitnya seimbang antara sentimen negatif dan sentimen positif
+
+
+2. Apa yang mungkin akan terjadi jika hal tersebut (membagi berdasarkan kelas) tidak
+dilakukan?
+
+Ada kemungkinan hasilnya positif semua maupun negatif semua--tidak seimbang
+
+3. Apa perbedaan binary events dengan word count?
+
+Binary event hanya akan ada 2 kemungkinan (kalau kata itu ada maupun kata tersebut tidak ada)
+Word Count berarti akan terhitung jumlah kemunculan kata tersebut dalam sebuah dokumen
+
+4. Pemodelan teks yang manakah yang menghasilkan model klasifikasi dengan akurasi lebih
+tinggi?
+
+TF-IDF
+
+5. Apa keluaran dari fungsi zip() pada python?
+
+Hasil dari zip itu merupakan hasil pairing dari nama fitur yang akan dicek sentimennya (positif maupun negatif)
+dan nilai hasil koefisien fitur tersebut yang menandakan tingkatanan nilai sentimennya (positif besar dan negatif semaik kecil)
+
+6. Pada kode program pembuatan feature_to_coef terdapat bagian word:coef. Apa artinya?
+
+Fungsi dari kde tersebut adalah untuk membuat sebuah dictinary. Arti dari kde tersebut adalah program akan membuat sebuah dictinary
+dengan format data yang ada dalam word kemudian dipisah dengan "," dan kemudian diisi kembali leh sebuah value berupa angka ang berisikan coefficient
+
+7. Apa maksud dari x[1] pada bagian key? Jika bingung, bandingkan hasilnya dengan
+menggunakan x[0].
+
+x[1] disort bedasarkan nilai coefficientnya. Jika x[0] akan di sort bedasarkan kata
+
+8. Mengapa perlu reverse = True?
+
+Karena kita ingin data dimulai dari yang paling besar sedangkan default dari sorted() dimulai dari yang paling kecil
+
+9. Dengan mengabaikan adanya kata OOV Bahasa Inggris dan stop words, apakah kata-kata
+dalam daftar tersebut masuk akal? Mengapa?
+
+Masuk akal karena hasilnya sudah sesuai dengan ekspetasi  
+
+10. Jika tidak masuk akal, apa yang perlu ditambahkan untuk mengatasi hal tersebut?
+(Diasumsikan kata-kata OOV dan stop words sudah dihapus).
+
