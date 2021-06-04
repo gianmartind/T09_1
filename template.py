@@ -129,7 +129,7 @@ def sentWordList():
     ## get sentiment word list from classification result
     
     global LOG_REG
-    global CVEC # use better vectorizer model (CVEC / TVEC)
+    global TVEC # use better vectorizer model (CVEC / TVEC)
     
     ## negative word list
     neg_list = []
@@ -140,7 +140,7 @@ def sentWordList():
     # your code here, see example from the article
     feature_to_coef = {
         word: round(coef, 3) for word, coef in zip(
-            CVEC.get_feature_names(), LOG_REG.coef_[0]
+            TVEC.get_feature_names(), LOG_REG.coef_[0]
         )
     }
     ## If you still confused, see what's inside feature_to_coef by removing # below
@@ -151,9 +151,9 @@ def sentWordList():
     # if coef value < 0: item goes to neg_list, elif coef value > 0: item goes to pos_list
     for key, value in feature_to_coef.items():
         if value < 0:
-            neg_list.append(key)
+            neg_list.append((key, value))
         else:
-            pos_list.append(key)
+            pos_list.append((key, value))
 
     ## dump sorted positive word list (from the most positive to less) into .pickle file
     pickle.dump(sorted(pos_list, key=lambda x: x[1], reverse=True), open('posList.pickle', 'wb'))
